@@ -44,7 +44,18 @@ header .logo{
     font-weight: 500;
     padding: 10px 70px;
 }
-header nav{
+.icons{
+    font-size: 50px;
+    position: absolute;
+    right: 5%;
+    color: rgb(88, 88, 88);
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+nav{
     width:55%;
     display: flex;
     justify-content: space-around;
@@ -216,7 +227,58 @@ input::-webkit-inner-spin-button {
         overflow-y: auto;
     }
     header{
-        height: 100px;
+        height: 150px;
+    }
+    header .logo {
+        font-size: 50px;
+    }
+    .content{
+        padding-top:0;
+    }
+    .icons{
+        display: inline-flex;
+    }
+    #check:checked~.icons #menu-icon{
+        display: none;
+    }
+    .icons #close-icon{
+        display: none;
+    }
+    #check:checked~.icons #close-icon{
+        display: block;
+    }
+    nav{
+        position: absolute;
+        left: 100%;
+        bottom: 0;
+        height: 90vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.568);
+        backdrop-filter: blur(7px);
+        overflow: hidden;
+        transition: .5s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    #check:checked~nav{
+        width: 100%;
+        left: 0;
+    }
+    nav a {
+        display: block;
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+        margin: 0;
+        padding: 20px 0;
+        text-align: center;
+        transform: translatex(100px);
+        transition: .5s ease;
+        opacity: 0;
+    }
+    #check:checked~nav a{
+        transform: translatex(0px);
+        transition-delay: calc(.18s * var(--i));
+        opacity: 1;
     }
     .content{
         padding: 30px;
@@ -267,7 +329,13 @@ input::-webkit-inner-spin-button {
 }
 @media (max-width:425px){
     header{
-        height: 60px;
+        height:100px;
+    }
+    header .logo {
+        font-size: 30px;
+    }
+    .content{
+        padding-top: 0;
     }
     .text img{
     width: 100% ;

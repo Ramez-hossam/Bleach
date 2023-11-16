@@ -44,6 +44,17 @@ header .logo{
     font-weight: 500;
     padding: 10px 70px;
 }
+.icons{
+    font-size: 50px;
+    position: absolute;
+    right: 5%;
+    color: rgb(88, 88, 88);
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
 header nav{
     width:56%;
     display: flex;
@@ -51,6 +62,7 @@ header nav{
     align-items: center;
     padding: 15px;
     font-size: 20px;
+    z-index: 1;
 }
 header nav a{
     padding: 10px;
@@ -134,6 +146,57 @@ body h1{
     }
 }
 @media (max-width:840px){
+    .container{
+        overflow-y: auto;
+    }
+    header{
+        height: 100px;
+    }
+    .icons{
+        display: inline-flex;
+    }
+    #check:checked~.icons #menu-icon{
+        display: none;
+    }
+    .icons #close-icon{
+        display: none;
+    }
+    #check:checked~.icons #close-icon{
+        display: block;
+    }
+    nav{
+        position: absolute;
+        left: 100%;
+        bottom: 0;
+        height: 85vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.568);
+        backdrop-filter: blur(7px);
+        overflow: hidden;
+        transition: .5s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    #check:checked~nav{
+        width: 100%;
+        left: 0;
+    }
+    nav a {
+        display: block;
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+        margin: 0;
+        padding: 20px 0;
+        text-align: center;
+        transform: translatex(100px);
+        transition: .5s ease;
+        opacity: 0;
+    }
+    #check:checked~nav a{
+        transform: translatex(0px);
+        transition-delay: calc(.18s * var(--i));
+        opacity: 1;
+    }
     .season{
         flex-direction: column;
     }
